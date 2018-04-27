@@ -21,6 +21,7 @@
 				<form class="board-form" method="get" action="/board/add">
 					<input type="hidden" name="userNo" value="${authUser.no}">
 					<input type="hidden" name="hit" value="0">
+					<input type="hidden" name="kwd" value="${param.kwd}">
 					<table class="tbl-ex">
 						<tr>
 							<th colspan="2">글쓰기</th>
@@ -37,7 +38,7 @@
 						</tr>
 					</table>
 					<div class="bottom">
-						<a href="/board/list?num=${param.num}&pc=${param.pc}">취소</a>
+						<a href="/board/list?num=${param.num}&pc=${param.pc}&kwd=${param.kwd}">취소</a>
 						<input type="submit" value="등록">
 					</div>
 				</form>				

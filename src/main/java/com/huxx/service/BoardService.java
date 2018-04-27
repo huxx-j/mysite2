@@ -15,13 +15,18 @@ public class BoardService {
     @Autowired
     private BoardDAO boardDAO;
 
-    public List<BoardVO> selectList(String num) {
-        int end = Integer.parseInt(num)*5;
-        int begin = end-4;
+    public List<BoardVO> selectList(BoardVO boardVO) {
+        int end = Integer.parseInt(boardVO.getNum()) * 5;
+        int begin = end - 4;
         Map<String, Object> map = new HashMap<>();
-        map.put("end",end);
-        map.put("begin",begin);
-        return boardDAO.selectList(map);
+        map.put("end", end);
+        map.put("begin", begin);
+        if ("".equals(boardVO.getKwd())) {
+            return boardDAO.selectList(map);
+        } else {
+            map.put("kwd",boardVO.getKwd());
+            return boardDAO.search(map);
+        }
     }
 
     public void insert(BoardVO boardVO){
@@ -42,9 +47,5 @@ public class BoardService {
 
     public void delete(BoardVO boardVO) {
         boardDAO.delete(boardVO);
-    }
-
-    public List<BoardVO> search(BoardVO boardVO) {
-        return boardDAO.search2(boardVO);
     }
 }

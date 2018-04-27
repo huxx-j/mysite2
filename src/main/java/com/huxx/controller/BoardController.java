@@ -18,8 +18,8 @@ public class BoardController {
     private BoardService boardService;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String list(Model model, @RequestParam("num")String num) {
-        model.addAttribute("list",boardService.selectList(num));
+    public String list(Model model,@ModelAttribute BoardVO boardVO) {
+        model.addAttribute("list",boardService.selectList(boardVO));
         return "board/list";
     }
 
@@ -31,7 +31,7 @@ public class BoardController {
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String add(@ModelAttribute BoardVO boardVO){
         boardService.insert(boardVO);
-        return "redirect:list?num=1&pc=1";
+        return "redirect:list?num=1&pc=1&kwd=";
     }
 
     @RequestMapping(value = "/view", method = RequestMethod.GET)
@@ -49,11 +49,8 @@ public class BoardController {
     @RequestMapping(value = "/update", method = RequestMethod.GET)
     public String update(@ModelAttribute BoardVO boardVO) {
         boardService.update(boardVO);
-        if (boardVO.getKwd()==null) {
-            return "redirect:view?no="+boardVO.getNo();
-        } else {
-            return "redirect:view?no="+boardVO.getNo()+"&kwd="+boardVO.getKwd();
-        }
+        return "redirect:view?num="+boardVO.getNum()+"&no="+boardVO.getNo()+"&kwd="+boardVO.getKwd()+"&pc="+boardVO.getPc();
+
     }
 
     @RequestMapping(value = "/del", method = RequestMethod.GET)
@@ -61,11 +58,4 @@ public class BoardController {
         boardService.delete(boardVO);
         return "redirect:list?num="+boardVO.getNum()+"&pc="+boardVO.getPc();
     }
-
-    @RequestMapping(value = "/search", method = RequestMethod.GET)
-    public String search(@ModelAttribute BoardVO boardVO, Model model){
-        model.addAttribute("list", boardService.search(boardVO));
-        return "board/list";
-    }
-
 }

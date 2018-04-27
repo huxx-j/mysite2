@@ -22,11 +22,10 @@
 					<table class="tbl-ex">
 						<tr>
 							<th colspan="2">글수정</th>
-							<input type="hidden" name="no" value="${boardVO.no}">
-							<c:if test="${param.kwd != null}">
-								<input type="hidden" name="kwd" value="${param.kwd}">
-							</c:if>
-
+							<input type="hidden" name="no" value="${param.no}">
+							<input type="hidden" name="kwd" value="${param.kwd}">
+							<input type="hidden" name="num" value="${param.num}">
+							<input type="hidden" name="pc" value="${param.pc}">
 						</tr>
 						<tr>
 							<td class="label">제목</td>
@@ -40,12 +39,7 @@
 						</tr>
 					</table>
 					<div class="bottom">
-						<c:if test="${param.kwd != null}">
-							<a href="/board/list?num=${param.num}&no=${boardVO.no}&pc=${param.pc}&kwd=${param.kwd}">취소</a>
-						</c:if>
-						<c:if test="${param.kwd == null}">
-							<a href="/board/list?num=${param.num}&no=${boardVO.no}&pc=${param.pc}">취소</a>
-						</c:if>
+							<a href="/board/view?no=${param.no}&num=${param.num}&kwd=${param.kwd}&pc=${param.pc}">취소</a>
 						<input type="submit" value="수정">
 					</div>
 				</form>				

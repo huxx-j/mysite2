@@ -36,33 +36,15 @@
                 </tr>
             </table>
             <div class="bottom">
-
-                <c:choose>
-                    <c:when test="${param.kwd==null}">
                         <c:choose>
                             <c:when test="${boardVO.userNo eq authUser.no}">
-                                <a href="/board/list?num=${param.num}&pc=${param.pc}">글목록</a>
-                                <a href="/board/modifyform?num=${param.num}&no=${boardVO.no}&pc=${param.pc}">글수정</a>
-                            </c:when>
-                            <c:otherwise>
-                                <a href="/board/list?num=${param.num}&pc=${param.pc}">글목록</a>
-                            </c:otherwise>
-                        </c:choose>
-                    </c:when>
-
-                    <c:otherwise>
-                        <c:choose>
-                            <c:when test="${boardVO.userNo eq authUser.no}">
-                                <a href="/board/search?&snum=${param.snum}kwd=${param.kwd}&pc=${param.pc}">글목록</a>
+                                <a href="/board/list?&num=${param.num}&kwd=${param.kwd}&pc=${param.pc}">글목록</a>
                                 <a href="/board/modifyform?num=${param.num}&no=${boardVO.no}&kwd=${param.kwd}&pc=${param.pc}">글수정</a>
                             </c:when>
                             <c:otherwise>
-                                <a href="/board/search?&snum=${param.snum}&kwd=${param.kwd}&pc=${param.pc}">글목록</a>
+                                <a href="/board/list?&num=${param.num}&kwd=${param.kwd}&pc=${param.pc}">글목록</a>
                             </c:otherwise>
                         </c:choose>
-                    </c:otherwise>
-                </c:choose>
-
             </div>
         </div>
     </div>

@@ -14,46 +14,6 @@ public class BoardVO {
     private String kwd;
     private String pc;
 
-    public String getPc() {
-        return pc;
-    }
-
-    public void setPc(String pc) {
-        this.pc = pc;
-    }
-
-    public String getTnum() {
-        return tnum;
-    }
-
-    public void setTnum(String tnum) {
-        this.tnum = tnum;
-    }
-
-    public String getNum() {
-        return num;
-    }
-
-    public void setNum(String num) {
-        this.num = num;
-    }
-
-    public String getSnum() {
-        return snum;
-    }
-
-    public void setSnum(String snum) {
-        this.snum = snum;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public BoardVO() {
     }
 
@@ -77,6 +37,46 @@ public class BoardVO {
         this.hit = hit;
         this.date = date;
         this.userNo = userNo;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getNum() {
+        return num;
+    }
+
+    public void setNum(String num) {
+        this.num = num;
+    }
+
+    public String getSnum() {
+        return snum;
+    }
+
+    public void setSnum(String snum) {
+        this.snum = snum;
+    }
+
+    public String getTnum() {
+        return tnum;
+    }
+
+    public void setTnum(String tnum) {
+        this.tnum = tnum;
+    }
+
+    public String getPc() {
+        return pc;
+    }
+
+    public void setPc(String pc) {
+        this.pc = pc;
     }
 
     public String getKwd() {
@@ -141,9 +141,15 @@ public class BoardVO {
                 "no='" + no + '\'' +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
-                ", hit='" + hit + '\'' +
+                ", hit=" + hit +
                 ", date='" + date + '\'' +
                 ", userNo='" + userNo + '\'' +
+                ", name='" + name + '\'' +
+                ", num='" + num + '\'' +
+                ", snum='" + snum + '\'' +
+                ", tnum='" + tnum + '\'' +
+                ", kwd='" + kwd + '\'' +
+                ", pc='" + pc + '\'' +
                 '}';
     }
 }

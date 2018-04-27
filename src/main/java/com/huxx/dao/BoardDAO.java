@@ -14,20 +14,12 @@ public class BoardDAO {
     @Autowired
     private SqlSession sqlSession;
 
-    public List<BoardVO> search2(BoardVO boardVO) {
-        return sqlSession.selectList("board.search2", boardVO);
-    }
-
-    public List<BoardVO> selectPage(String num) {
-        return sqlSession.selectList("board.selectPage", num);
+    public List<BoardVO> search(Map map) {
+        return sqlSession.selectList("board.search", map);
     }
 
     public void delete(BoardVO boardVO) {
         sqlSession.delete("board.delete", boardVO);
-    }
-
-    public void updateHit(String no) {
-        sqlSession.update("board.updateHit", no);
     }
 
     public BoardVO selectModify(String no) {
