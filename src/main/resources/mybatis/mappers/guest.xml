@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="guest">
+
+    <resultMap type="GuestVO" id="rml">
+        <result column="no" property="no" />
+        <result column="name" property="name" />
+        <result column="password" property="password" />
+        <result column="content" property="content" />
+        <result column="reg_date" property="reg_date" />
+    </resultMap>
+
+    <insert id="insert" parameterType="GuestVO">
+        <![CDATA[
+        INSERT
+              INTO GUESTBOOK
+              VALUES (SEQ_GUEST_NO.nextval,
+              #{name},
+              #{password},
+              #{content},
+              CURRENT_DATE)
+        ]]>
+    </insert>
+
+    <select id="getList" resultMap="rml">
+        <![CDATA[
+        SELECT *
+              FROM GUESTBOOK
+              ORDER BY NO
+        ]]>
+    </select>
+
+    <delete id="delete" parameterType="GuestVO">
+        <![CDATA[
+        DELETE
+              FROM GUESTBOOK
+              WHERE NO=#{no} and password=#{password}
+        ]]>
+    </delete>
+
+</mapper>

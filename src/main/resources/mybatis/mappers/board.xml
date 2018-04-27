@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+
+    <resultMap type="BoardVO" id="rm">
+        <result column="no" property="no" />
+        <result column="title" property="title" />
+        <result column="content" property="content" />
+        <result column="hit" property="hit" />
+        <result column="reg_date" property="date" />
+        <result column="user_no" property="userNo" />
+        <result column="NAME" property="name" />
+        <result column="tnum" property="tnum" />
+    </resultMap>
+
+    <select id="search2" parameterType="map" resultMap="rm">
+        <![CDATA[
+        SELECT *
+                FROM (
+                SELECT ROWNUM num, temp.*
+                FROM (
+                SELECT b.NO, b.TITLE, u.name, b.HIT, b.REG_DATE, b.USER_NO,(SELECT COUNT(*)
+                FROM BOARD
+                WHERE TITLE LIKE '%'||#{kwd}||'%')
+                FROM BOARD B, USERS U
+                WHERE b.USER_NO=u.no and b.TITLE LIKE '%'||#{kwd}||'%'
+                ORDER BY b.NO DESC) temp
+                )
+
+        ]]>
+    </select>
+
+    <select id="selectPage" parameterType="String">
+        <![CDATA[
+        SELECT *
+                FROM (
+                SELECT ROWNUM num, temp.*
+                FROM (
+                SELECT b.NO, b.TITLE, u.name, b.HIT, b.REG_DATE, b.USER_NO,(SELECT COUNT(*) FROM BOARD)
+                FROM BOARD B, USERS U
+                WHERE b.USER_NO=u.no
+                ORDER BY b.NO DESC) temp)
+                WHERE num
+                BETWEEN #{(no*5)-4} and #{no*5}
+        ]]>
+    </select>
+
+    <delete id="delete" parameterType="String">
+        <![CDATA[
+        DELETE
+              FROM BOARD
+              WHERE NO= #{no}
+        ]]>
+    </delete>
+
+    <update id="updateHit" parameterType="String">
+        <![CDATA[
+        UPDATE BOARD
+              SET HIT=HIT+1
+              WHERE NO = #{no}
+        ]]>
+    </update>
+
+    <select id="selectModify" parameterType="String" resultMap="rm">
+        <![CDATA[
+        SELECT NO, TITLE, CONTENT
+              FROM BOARD
+              WHERE NO = #{no}
+        ]]>
+    </select>
+
+    <select id="selectList" parameterType="Map" resultMap="rm">
+        <![CDATA[
+         SELECT *
+                FROM (
+                SELECT ROWNUM num, temp.*
+                FROM (
+                SELECT b.NO, b.TITLE, u.name, b.HIT, b.REG_DATE, b.USER_NO,(SELECT COUNT(*) FROM BOARD) tnum
+                FROM BOARD B, USERS U
+                WHERE b.USER_NO=u.no
+                ORDER BY b.NO DESC) temp)
+                WHERE num
+                BETWEEN #{begin} and #{end}
+        ]]>
+    </select>
+
+    <select id="selectList_origin" resultMap="rm">
+        <![CDATA[
+        SELECT b.NO, b.TITLE, u.name, b.HIT, b.REG_DATE, b.USER_NO
+              FROM BOARD B, USERS U
+              WHERE b.USER_NO=u.no
+              ORDER BY b.NO DESC
+        ]]>
+    </select>
+
+    <update id="update" parameterType="BoardVO">
+        <![CDATA[
+        UPDATE BOARD
+              SET TITLE=#{title}, CONTENT=#{content}
+              WHERE NO =#{no}
+        ]]>
+    </update>
+
+    <insert id="insert" parameterType="BoardVO">
+        <![CDATA[
+        INSERT
+              INTO BOARD
+              VALUES (SEQ_GUEST_NO.nextval,
+              #{title},
+              #{content},
+              #{hit},
+              CURRENT_DATE,
+              #{userNo})
+        ]]>
+    </insert>
+
+    <select id="selectView" parameterType="String" resultMap="rm">
+        <![CDATA[
+        SELECT NO,
+              TITLE,
+              (SELECT
+                      REPLACE(CONTENT, chr(13) || chr(10), '<br>')
+                      FROM BOARD WHERE NO = #{no}) CONTENT,
+              user_NO
+              FROM board
+              WHERE NO = #{no}
+        ]]>
+    </select>
+
+</mapper>

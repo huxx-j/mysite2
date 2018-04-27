@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="@huxxinstance">
+  <database-model serializer="dbm" rdbms="ORACLE" format-version="4.7">
+    <root id="1"/>
+    <schema id="2" parent="1" name="HUXX">
+      <ObjectId>67</ObjectId>
+      <IntrospectionTimestamp>2018-04-26.13:35:53</IntrospectionTimestamp>
+      <CreatedTimestamp>2018-04-10.09:46:14</CreatedTimestamp>
+      <ModifiedTimestamp>2018-04-19.15:08:57</ModifiedTimestamp>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="PUBLIC">
+      <ObjectId>1</ObjectId>
+    </schema>
+    <schema id="4" parent="1" name="SYS">
+      <ObjectId>0</ObjectId>
+    </schema>
+    <schema id="5" parent="1" name="AUDSYS">
+      <ObjectId>7</ObjectId>
+    </schema>
+    <schema id="6" parent="1" name="SYSTEM">
+      <ObjectId>8</ObjectId>
+    </schema>
+    <schema id="7" parent="1" name="OUTLN">
+      <ObjectId>13</ObjectId>
+    </schema>
+    <schema id="8" parent="1" name="GSMADMIN_INTERNAL">
+      <ObjectId>21</ObjectId>
+    </schema>
+    <schema id="9" parent="1" name="GSMUSER">
+      <ObjectId>22</ObjectId>
+    </schema>
+    <schema id="10" parent="1" name="DIP">
+      <ObjectId>23</ObjectId>
+    </schema>
+    <schema id="11" parent="1" name="DBSNMP">
+      <ObjectId>48</ObjectId>
+    </schema>
+    <schema id="12" parent="1" name="APPQOSSYS">
+      <ObjectId>49</ObjectId>
+    </schema>
+    <schema id="13" parent="1" name="XDB">
+      <ObjectId>50</ObjectId>
+    </schema>
+    <schema id="14" parent="1" name="ANONYMOUS">
+      <ObjectId>51</ObjectId>
+    </schema>
+    <schema id="15" parent="1" name="GSMCATUSER">
+      <ObjectId>61</ObjectId>
+    </schema>
+    <schema id="16" parent="1" name="CTXSYS">
+      <ObjectId>62</ObjectId>
+    </schema>
+    <schema id="17" parent="1" name="RDSADMIN">
+      <ObjectId>64</ObjectId>
+    </schema>
+    <schema id="18" parent="1" name="WEBDB">
+      <ObjectId>68</ObjectId>
+    </schema>
+    <schema id="19" parent="1" name="SYSBACKUP">
+      <ObjectId>2147483617</ObjectId>
+    </schema>
+    <schema id="20" parent="1" name="SYSDG">
+      <ObjectId>2147483618</ObjectId>
+    </schema>
+    <schema id="21" parent="1" name="SYSKM">
+      <ObjectId>2147483619</ObjectId>
+    </schema>
+    <schema id="22" parent="1" name="XS$NULL">
+      <ObjectId>2147483638</ObjectId>
+    </schema>
+    <sequence id="23" parent="2" name="SEQ_BOARD_NO">
+      <ObjectId>21442</ObjectId>
+      <CreatedTimestamp>2018-04-19.15:02:28</CreatedTimestamp>
+      <ModifiedTimestamp>2018-04-19.15:02:28</ModifiedTimestamp>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>-2147483648</CacheSize>
+    </sequence>
+    <sequence id="24" parent="2" name="SEQ_EMAILLIST_NO">
+      <ObjectId>21159</ObjectId>
+      <CreatedTimestamp>2018-04-17.17:31:32</CreatedTimestamp>
+      <ModifiedTimestamp>2018-04-17.17:31:32</ModifiedTimestamp>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>-2147483648</CacheSize>
+    </sequence>
+    <sequence id="25" parent="2" name="SEQ_GUEST_NO">
+      <ObjectId>21443</ObjectId>
+      <CreatedTimestamp>2018-04-19.15:08:57</CreatedTimestamp>
+      <ModifiedTimestamp>2018-04-19.15:08:57</ModifiedTimestamp>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>-2147483648</CacheSize>
+    </sequence>
+    <sequence id="26" parent="2" name="SEQ_USER_NO">
+      <ObjectId>21304</ObjectId>
+      <CreatedTimestamp>2018-04-19.09:47:08</CreatedTimestamp>
+      <ModifiedTimestamp>2018-04-19.09:47:08</ModifiedTimestamp>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>-2147483648</CacheSize>
+    </sequence>
+    <sequence id="27" parent="2" name="ZIPCODE_SEQ">
+      <ObjectId>20663</ObjectId>
+      <CreatedTimestamp>2018-04-12.13:21:04</CreatedTimestamp>
+      <ModifiedTimestamp>2018-04-12.13:21:04</ModifiedTimestamp>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <table id="28" parent="2" name="BOARD">
+      <ObjectId>21440</ObjectId>
+      <CreatedTimestamp>2018-04-19.15:01:37</CreatedTimestamp>
+      <ModifiedTimestamp>2018-04-19.15:01:37</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="29" parent="2" name="EMAILLIST">
+      <ObjectId>21157</ObjectId>
+      <CreatedTimestamp>2018-04-17.17:12:38</CreatedTimestamp>
+      <ModifiedTimestamp>2018-04-17.17:12:38</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="30" parent="2" name="GUESTBOOK">
+      <ObjectId>21297</ObjectId>
+      <CreatedTimestamp>2018-04-18.11:42:44</CreatedTimestamp>
+      <ModifiedTimestamp>2018-04-18.11:42:44</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="31" parent="2" name="MEMBER_TBL">
+      <ObjectId>20494</ObjectId>
+      <CreatedTimestamp>2018-04-10.16:04:54</CreatedTimestamp>
+      <ModifiedTimestamp>2018-04-10.16:04:54</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="32" parent="2" name="USERS">
+      <ObjectId>21301</ObjectId>
+      <CreatedTimestamp>2018-04-19.09:46:45</CreatedTimestamp>
+      <ModifiedTimestamp>2018-04-19.09:46:45</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="33" parent="2" name="ZIPCODE_TBL">
+      <ObjectId>20467</ObjectId>
+      <CreatedTimestamp>2018-04-10.09:46:14</CreatedTimestamp>
+      <ModifiedTimestamp>2018-04-10.09:46:14</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <column id="34" parent="28" name="NO">
+      <Position>1</Position>
+      <DataType>NUMBER(*)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="35" parent="28" name="TITLE">
+      <Position>2</Position>
+      <DataType>VARCHAR2(500)|0</DataType>
+    </column>
+    <column id="36" parent="28" name="CONTENT">
+      <Position>3</Position>
+      <DataType>VARCHAR2(4000)|0</DataType>
+    </column>
+    <column id="37" parent="28" name="HIT">
+      <Position>4</Position>
+      <DataType>NUMBER(*)|0</DataType>
+    </column>
+    <column id="38" parent="28" name="REG_DATE">
+      <Position>5</Position>
+      <DataType>DATE|0</DataType>
+    </column>
+    <column id="39" parent="28" name="USER_NO">
+      <Position>6</Position>
+      <DataType>NUMBER(*)|0</DataType>
+    </column>
+    <index id="40" parent="28" name="SYS_C005207">
+      <ObjectId>21441</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2018-04-19.15:01:38</CreatedTimestamp>
+      <ModifiedTimestamp>2018-04-19.15:01:38</ModifiedTimestamp>
+      <TablespaceName>USERS</TablespaceName>
+      <ColNames>NO</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="41" parent="28" name="SYS_C005207">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2018-04-19.15:01:38</ModifiedTimestamp>
+      <ColNames>NO</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>SYS_C005207</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="42" parent="28" name="C_BOARD_FK">
+      <ModifiedTimestamp>2018-04-19.15:01:38</ModifiedTimestamp>
+      <ColNames>USER_NO</ColNames>
+      <RefSchemaName>HUXX</RefSchemaName>
+      <RefTableName>USERS</RefTableName>
+      <RefKeyName>SYS_C005201</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <column id="43" parent="29" name="NO">
+      <Position>1</Position>
+      <DataType>NUMBER(*)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="44" parent="29" name="LAST_NAME">
+      <Position>2</Position>
+      <DataType>VARCHAR2(5)|0</DataType>
+    </column>
+    <column id="45" parent="29" name="FIRST_NAME">
+      <Position>3</Position>
+      <DataType>VARCHAR2(10)|0</DataType>
+    </column>
+    <column id="46" parent="29" name="EMAIL">
+      <Position>4</Position>
+      <DataType>VARCHAR2(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="47" parent="29" name="SYS_C005193">
+      <ObjectId>21158</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2018-04-17.17:12:39</CreatedTimestamp>
+      <ModifiedTimestamp>2018-04-17.17:12:39</ModifiedTimestamp>
+      <TablespaceName>USERS</TablespaceName>
+      <ColNames>NO</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="48" parent="29" name="SYS_C005193">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2018-04-17.17:12:39</ModifiedTimestamp>
+      <ColNames>NO</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>SYS_C005193</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="49" parent="30" name="NO">
+      <Position>1</Position>
+      <DataType>NUMBER(*)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="50" parent="30" name="NAME">
+      <Position>2</Position>
+      <DataType>VARCHAR2(80)|0</DataType>
+    </column>
+    <column id="51" parent="30" name="PASSWORD">
+      <Position>3</Position>
+      <DataType>VARCHAR2(20)|0</DataType>
+    </column>
+    <column id="52" parent="30" name="CONTENT">
+      <Position>4</Position>
+      <DataType>VARCHAR2(2000)|0</DataType>
+    </column>
+    <column id="53" parent="30" name="REG_DATE">
+      <Position>5</Position>
+      <DataType>DATE|0</DataType>
+    </column>
+    <index id="54" parent="30" name="SYS_C005198">
+      <ObjectId>21298</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2018-04-18.11:42:44</CreatedTimestamp>
+      <ModifiedTimestamp>2018-04-18.11:42:44</ModifiedTimestamp>
+      <TablespaceName>USERS</TablespaceName>
+      <ColNames>NO</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="55" parent="30" name="SYS_C005198">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2018-04-18.11:42:44</ModifiedTimestamp>
+      <ColNames>NO</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>SYS_C005198</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="56" parent="31" name="USER_ID">
+      <Position>1</Position>
+      <DataType>VARCHAR2(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="57" parent="31" name="PW">
+      <Position>2</Position>
+      <DataType>VARCHAR2(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="58" parent="31" name="NAME">
+      <Position>3</Position>
+      <DataType>VARCHAR2(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="59" parent="31" name="EMAIL">
+      <Position>4</Position>
+      <DataType>VARCHAR2(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="60" parent="31" name="ZIPCODE">
+      <Position>5</Position>
+      <DataType>CHAR(7)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="61" parent="31" name="ADDR1">
+      <Position>6</Position>
+      <DataType>VARCHAR2(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="62" parent="31" name="ADDR2">
+      <Position>7</Position>
+      <DataType>VARCHAR2(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="63" parent="31" name="TOOL">
+      <Position>8</Position>
+      <DataType>CHAR(1)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="64" parent="31" name="LANG">
+      <Position>9</Position>
+      <DataType>VARCHAR2(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="65" parent="31" name="PRJ">
+      <Position>10</Position>
+      <DataType>CHAR(1)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="66" parent="31" name="SYS_C005123">
+      <ObjectId>20495</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2018-04-10.16:04:55</CreatedTimestamp>
+      <ModifiedTimestamp>2018-04-10.16:04:55</ModifiedTimestamp>
+      <TablespaceName>USERS</TablespaceName>
+      <ColNames>USER_ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="67" parent="31" name="SYS_C005123">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2018-04-10.16:04:55</ModifiedTimestamp>
+      <ColNames>USER_ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>SYS_C005123</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="68" parent="32" name="NO">
+      <Position>1</Position>
+      <DataType>NUMBER(*)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="69" parent="32" name="NAME">
+      <Position>2</Position>
+      <DataType>VARCHAR2(80)|0</DataType>
+    </column>
+    <column id="70" parent="32" name="EMAIL">
+      <Position>3</Position>
+      <DataType>VARCHAR2(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="71" parent="32" name="PASSWORD">
+      <Position>4</Position>
+      <DataType>VARCHAR2(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="72" parent="32" name="GENDER">
+      <Position>5</Position>
+      <DataType>VARCHAR2(10)|0</DataType>
+    </column>
+    <index id="73" parent="32" name="SYS_C005201">
+      <ObjectId>21302</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2018-04-19.09:46:45</CreatedTimestamp>
+      <ModifiedTimestamp>2018-04-19.09:46:45</ModifiedTimestamp>
+      <TablespaceName>USERS</TablespaceName>
+      <ColNames>NO</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="74" parent="32" name="SYS_C005202">
+      <ObjectId>21303</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2018-04-19.09:46:45</CreatedTimestamp>
+      <ModifiedTimestamp>2018-04-19.09:46:45</ModifiedTimestamp>
+      <TablespaceName>USERS</TablespaceName>
+      <ColNames>EMAIL</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="75" parent="32" name="SYS_C005201">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2018-04-19.09:46:45</ModifiedTimestamp>
+      <ColNames>NO</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>SYS_C005201</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <key id="76" parent="32" name="SYS_C005202">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2018-04-19.09:46:45</ModifiedTimestamp>
+      <ColNames>EMAIL</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>SYS_C005202</UnderlyingIndexName>
+    </key>
+    <column id="77" parent="33" name="ZIPCODE">
+      <Position>1</Position>
+      <DataType>VARCHAR2(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="78" parent="33" name="SIDO">
+      <Position>2</Position>
+      <DataType>VARCHAR2(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="79" parent="33" name="GUGUN">
+      <Position>3</Position>
+      <DataType>VARCHAR2(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="80" parent="33" name="DONG">
+      <Position>4</Position>
+      <DataType>VARCHAR2(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="81" parent="33" name="RI">
+      <Position>5</Position>
+      <DataType>VARCHAR2(100)|0</DataType>
+    </column>
+    <column id="82" parent="33" name="BLDG">
+      <Position>6</Position>
+      <DataType>VARCHAR2(100)|0</DataType>
+    </column>
+    <column id="83" parent="33" name="BUNJI">
+      <Position>7</Position>
+      <DataType>VARCHAR2(100)|0</DataType>
+    </column>
+    <column id="84" parent="33" name="SEQ">
+      <Position>8</Position>
+      <DataType>VARCHAR2(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+  </database-model>
+</dataSource>
