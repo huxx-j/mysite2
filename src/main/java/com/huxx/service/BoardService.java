@@ -34,6 +34,7 @@ public class BoardService {
     }
 
     public BoardVO selectView(String no) {
+        boardDAO.updateHit(no);
         return boardDAO.selectView(no);
     }
 

@@ -39,8 +39,10 @@ public class BoardDAO {
     }
 
     public BoardVO selectView(String no) {
-        sqlSession.update("board.updateHit", no);
         return sqlSession.selectOne("board.selectView", no);
     }
 
+    public void updateHit(String no) {
+        sqlSession.update("board.updateHit", no);
+    }
 }
