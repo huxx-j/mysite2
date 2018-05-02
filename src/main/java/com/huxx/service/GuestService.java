@@ -26,6 +26,15 @@ public class GuestService {
         return guestDAO.select(guestDAO.insert(guestVO));
     }
 
+    public int del_ajax(GuestVO guestVO) {
+        int c = guestDAO.delete(guestVO);
+        if(c>0) {
+            return guestVO.getNo();
+        } else {
+            return 0;
+        }
+    }
+
     public void delete(GuestVO guestVO) {
         guestDAO.delete(guestVO);
     }

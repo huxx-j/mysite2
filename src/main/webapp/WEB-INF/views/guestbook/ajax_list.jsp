@@ -37,7 +37,6 @@
                             <td colspan=4 align=right><input type="button" id="btnAdd" VALUE=" 확인 "/></td>
                         </tr>
                     </table>
-                    <input id="btnModal" type="button" value="삭제">
 
                 <ul id="guestbook_list"></ul>
 
@@ -54,16 +53,15 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"
-                        aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <h4 class="modal-title">방명록삭제</h4>
             </div>
             <div class="modal-body">
-                <label>비밀번호</label> <input type="password" name="modalPassword"
-                                           id="modalPassword"><br> <input type="text"
-                                                                          name="modalPassword" value="" id="modalNo"> <br>
+                <label>비밀번호</label>
+                <input type="password" name="modalPassword" id="modalPassword"><br>
+                <input type="hidden" name="modalNo" value="" id="modalNo"> <br>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
@@ -102,12 +100,12 @@
 
     function render(guestVO,updown) {
         var str = "";
-        str += "<li>";
+        str += "<li class='" + guestVO.no + "'>";
         str += "    <table width='510' border='1'>";
         str += "        <tr>";
         str += "            <td>[" + guestVO.no + "]</td>";
         str += "            <td>" + guestVO.name + "</td>";
-        str += "            <td><a href=''>삭제</a></td>";
+        str += "            <td><input type='button' id='" + guestVO.no + "' value='delete'></td>";
         str += "        </tr>";
         str += "        <tr>";
         str += "            <td colspan='3'>"+ guestVO.content +"</td>";
@@ -149,9 +147,35 @@
         });
     });
 
-    $("#btnModal").on("click",function () {
-        console.log("modal!!")
+    $("ul").on("click","input",function () {
+        var $this = $(this);
+        var no = $this.attr("id");
+        console.log($this);
+        $("#modalNo").val(no);
         $("#del-pop").modal();
-    })
+    });
+
+    $("#btn_del").on("click",function () {
+        var password = $("[name=modalPassword]").val();
+        var no = $("[name=modalNo]").val();
+
+        $.ajax({
+            url: "/api/guest/del",
+            type: "post",
+            // contentType: "application/json",
+            data: {no: no, password: password},
+            dataType: "json",
+            success: function (no) {
+                /*성공시 처리해야될 코드 작성*/
+                $("."+no).remove();
+                $("#modalPassword").val("");
+                $("#del-pop").modal("hide");
+            },
+            error: function (XHR, status, error) {
+                console.error(status + " : " + error);
+            }
+        });
+    });
+
 </script>
 </html>

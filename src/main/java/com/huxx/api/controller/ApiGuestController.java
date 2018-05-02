@@ -32,4 +32,10 @@ public class ApiGuestController {
         GuestVO vo = guestService.insert_ajax(guestVO);
         return vo;
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/del", method = RequestMethod.POST)
+    public int del(@ModelAttribute GuestVO guestVO){
+        return guestService.del_ajax(guestVO);
+    }
 }

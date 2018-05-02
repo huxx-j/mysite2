@@ -23,8 +23,8 @@ public class GuestDAO {
         return sqlSession.selectList("guest.getList");
     }
 
-    public void delete(GuestVO guestVO) {
-        sqlSession.delete("guest.delete", guestVO);
+    public int delete(GuestVO guestVO) {
+        return sqlSession.delete("guest.delete", guestVO);
     }
 
     public GuestVO select(int no) {
