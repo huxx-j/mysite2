@@ -21,19 +21,15 @@ public class BoardService {
         Map<String, Object> map = new HashMap<>();
         map.put("end", end);
         map.put("begin", begin);
-        if ("".equals(boardVO.getKwd())) {
-            return boardDAO.selectList(map);
-        } else {
-            map.put("kwd",boardVO.getKwd());
-            return boardDAO.search(map);
-        }
+        map.put("kwd",boardVO.getKwd());
+        return boardDAO.search(map);
     }
 
     public void insert(BoardVO boardVO){
         boardDAO.insert(boardVO);
     }
 
-    public BoardVO selectView(String no) {
+    public BoardVO selectView(String no) { //
         boardDAO.updateHit(no);
         return boardDAO.selectView(no);
     }

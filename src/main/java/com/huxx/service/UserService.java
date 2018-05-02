@@ -45,4 +45,13 @@ public class UserService {
         }
 
     }
+
+    public boolean emailCheck(String email) {
+        boolean isExists = false;
+        UserVO userVO = userDAO.emailCheck(email);
+        if (userVO!=null) {
+            isExists = true;
+        }
+        return isExists;
+    }
 }

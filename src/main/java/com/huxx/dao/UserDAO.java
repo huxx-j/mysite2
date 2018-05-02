@@ -28,4 +28,9 @@ public class UserDAO {
     public UserVO getUser(Map map) {
         return sqlSession.selectOne("user.getUser", map);
     }
+
+    public UserVO emailCheck(String email) {
+        System.out.println("d"+email);
+        return sqlSession.selectOne("user.emailCheck", email);
+    }
 }

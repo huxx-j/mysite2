@@ -3,12 +3,10 @@ package com.huxx.controller;
 import com.huxx.service.UserService;
 import com.huxx.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -68,4 +66,10 @@ public class UserController {
         return "redirect:/main";
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/emailcheck", method = RequestMethod.POST)
+    public boolean exists(@RequestParam("email") String email){
+        System.out.println("ajax 이메일 체크 : " + email);
+        return userService.emailCheck(email);
+    }
 }

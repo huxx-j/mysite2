@@ -36,9 +36,7 @@
                     <c:forEach items="${list}" var="vo">
                         <tr>
                             <td>${vo.no}</td>
-                                    <td>
-                                        <a href="/board/view?no=${vo.no}&num=${param.num}&kwd=${param.kwd}&pc=${param.pc}">${vo.title}</a>
-                                    </td>
+                            <td><a href="/board/view?no=${vo.no}&num=${param.num}&kwd=${param.kwd}&pc=${param.pc}">${vo.title}</a></td>
                             <td>${vo.name}</td>
                             <td>${vo.hit}</td>
                             <td>${vo.date}</td>
@@ -50,7 +48,6 @@
                         </tr>
                     </c:forEach>
                 </c:if>
-
             </table>
             <div class="pager">
                 <ul>
