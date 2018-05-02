@@ -1,7 +1,7 @@
 package com.huxx.vo;
 
 public class GuestVO {
-    private String no;
+    private int no;
     private String name;
     private String password;
     private String content;
@@ -16,7 +16,7 @@ public class GuestVO {
         this.content = content;
     }
 
-    public GuestVO(String no, String name, String password, String content, String reg_date) {
+    public GuestVO(int no, String name, String password, String content, String reg_date) {
         this.no = no;
         this.name = name;
         this.password = password;
@@ -24,11 +24,11 @@ public class GuestVO {
         this.reg_date = reg_date;
     }
 
-    public String getNo() {
+    public int getNo() {
         return no;
     }
 
-    public void setNo(String no) {
+    public void setNo(int no) {
         this.no = no;
     }
 
@@ -62,5 +62,16 @@ public class GuestVO {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    @Override
+    public String toString() {
+        return "GuestVO{" +
+                "no='" + no + '\'' +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", content='" + content + '\'' +
+                ", reg_date='" + reg_date + '\'' +
+                '}';
     }
 }

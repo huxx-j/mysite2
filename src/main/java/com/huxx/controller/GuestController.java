@@ -39,4 +39,11 @@ public class GuestController {
     public String delform(@RequestParam("no") String no){
         return "guestbook/deleteform";
     }
+
+    @RequestMapping(value = "/ajax_list", method = RequestMethod.GET)
+    public String ajaxList(Model model){
+        model.addAttribute("list", guestService.getList());
+        System.out.println("ajax");
+        return "guestbook/ajax_list";
+    }
 }

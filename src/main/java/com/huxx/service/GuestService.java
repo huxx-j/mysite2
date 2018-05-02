@@ -2,6 +2,7 @@ package com.huxx.service;
 
 import com.huxx.dao.GuestDAO;
 import com.huxx.vo.GuestVO;
+import com.huxx.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,10 @@ public class GuestService {
 
     public void insert(GuestVO guestVO){
         guestDAO.insert(guestVO);
+    }
+
+    public GuestVO insert_ajax(GuestVO guestVO) {
+        return guestDAO.select(guestDAO.insert(guestVO));
     }
 
     public void delete(GuestVO guestVO) {

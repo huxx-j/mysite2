@@ -30,7 +30,6 @@ public class UserDAO {
     }
 
     public UserVO emailCheck(String email) {
-        System.out.println("d"+email);
         return sqlSession.selectOne("user.emailCheck", email);
     }
 }
