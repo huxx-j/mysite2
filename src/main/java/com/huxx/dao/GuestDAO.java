@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class GuestDAO {
@@ -22,6 +23,11 @@ public class GuestDAO {
     public List<GuestVO> getList() {
         return sqlSession.selectList("guest.getList");
     }
+
+    public List<GuestVO> getInfinityList(Map map) {
+        return sqlSession.selectList("guest.getList_Scroll", map);
+    }
+
 
     public int delete(GuestVO guestVO) {
         return sqlSession.delete("guest.delete", guestVO);

@@ -4,7 +4,7 @@
     <root id="1"/>
     <schema id="2" parent="1" name="HUXX">
       <ObjectId>67</ObjectId>
-      <IntrospectionTimestamp>2018-04-26.13:35:53</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2018-05-03.16:22:19</IntrospectionTimestamp>
       <CreatedTimestamp>2018-04-10.09:46:14</CreatedTimestamp>
       <ModifiedTimestamp>2018-04-19.15:08:57</ModifiedTimestamp>
       <Current>1</Current>

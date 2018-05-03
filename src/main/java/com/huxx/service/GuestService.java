@@ -6,7 +6,9 @@ import com.huxx.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class GuestService {
@@ -17,7 +19,14 @@ public class GuestService {
     public List<GuestVO> getList(){
         return guestDAO.getList();
     }
-
+    public List<GuestVO> getInfinityList(int c){
+        int end = c*5;
+        int begin = end-4;
+        Map<String, Object> map = new HashMap<>();
+        map.put("end", end);
+        map.put("begin", begin);
+    return guestDAO.getInfinityList(map);
+    }
     public void insert(GuestVO guestVO){
         guestDAO.insert(guestVO);
     }
@@ -38,4 +47,6 @@ public class GuestService {
     public void delete(GuestVO guestVO) {
         guestDAO.delete(guestVO);
     }
+
+
 }

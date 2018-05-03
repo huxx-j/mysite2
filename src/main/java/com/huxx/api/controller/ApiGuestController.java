@@ -4,10 +4,7 @@ import com.huxx.service.GuestService;
 import com.huxx.vo.GuestVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,16 +15,24 @@ public class ApiGuestController {
     @Autowired
     private GuestService guestService;
 
-    @ResponseBody
-    @RequestMapping(value = "/list", method = RequestMethod.POST)
-    public List<GuestVO> list(){
-        List<GuestVO> list = guestService.getList();
-        return list;
-    }
+//    @ResponseBody
+//    @RequestMapping(value = "/list", method = RequestMethod.POST)
+//    public List<GuestVO> list(){
+//        List<GuestVO> list = guestService.getList();
+//        return list;
+//    }
 
-    @ResponseBody
+//    @ResponseBody //파라미터로 보낼때
+//    @RequestMapping(value = "/add", method = RequestMethod.POST)
+//    public GuestVO add(@ModelAttribute GuestVO guestVO){
+//
+//        GuestVO vo = guestService.insert_ajax(guestVO);
+//        return vo;
+//    }
+
+    @ResponseBody //JSON으로 보낼때
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public GuestVO add(@ModelAttribute GuestVO guestVO){
+    public GuestVO add(@RequestBody GuestVO guestVO){
 
         GuestVO vo = guestService.insert_ajax(guestVO);
         return vo;
@@ -37,5 +42,13 @@ public class ApiGuestController {
     @RequestMapping(value = "/del", method = RequestMethod.POST)
     public int del(@ModelAttribute GuestVO guestVO){
         return guestService.del_ajax(guestVO);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/list", method = RequestMethod.POST)
+    public List<GuestVO> infinityList(@RequestParam("c") int c){
+        List<GuestVO> list = guestService.getInfinityList(c);
+
+        return list;
     }
 }
