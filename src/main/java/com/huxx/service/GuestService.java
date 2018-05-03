@@ -19,6 +19,7 @@ public class GuestService {
     public List<GuestVO> getList(){
         return guestDAO.getList();
     }
+
     public List<GuestVO> getInfinityList(int c){
         int end = c*5;
         int begin = end-4;
@@ -27,6 +28,7 @@ public class GuestService {
         map.put("begin", begin);
     return guestDAO.getInfinityList(map);
     }
+
     public void insert(GuestVO guestVO){
         guestDAO.insert(guestVO);
     }
@@ -47,6 +49,5 @@ public class GuestService {
     public void delete(GuestVO guestVO) {
         guestDAO.delete(guestVO);
     }
-
 
 }

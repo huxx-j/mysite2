@@ -91,11 +91,6 @@
         }
     });
 
-    // $("#btnShowMore").on("click",function () {
-    //    c++;
-    //    fetchList(a,b)
-    // });
-
     function fetchScroll(c) {
         // 리스트 요청 ajax
         $.ajax({
@@ -142,7 +137,7 @@
         str += "            <td><input type='button' data-delno='" + guestVO.no + "' value='delete'></td>";
         str += "        </tr>";
         str += "        <tr>";
-        str += "            <td colspan='3'>"+ guestVO.content +"</td>";
+        str += "            <td colspan='3'><pre>"+ guestVO.content +"</pre></td>";
         str += "        </tr>";
         str += "    </table>";
         str += "    </br>";

@@ -33,7 +33,6 @@ public class ApiGuestController {
     @ResponseBody //JSON으로 보낼때
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public GuestVO add(@RequestBody GuestVO guestVO){
-
         GuestVO vo = guestService.insert_ajax(guestVO);
         return vo;
     }
@@ -48,7 +47,7 @@ public class ApiGuestController {
     @RequestMapping(value = "/list", method = RequestMethod.POST)
     public List<GuestVO> infinityList(@RequestParam("c") int c){
         List<GuestVO> list = guestService.getInfinityList(c);
-
         return list;
     }
+
 }

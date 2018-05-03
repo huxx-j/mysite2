@@ -68,7 +68,7 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(value = "/emailcheck", method = RequestMethod.POST)
-    public boolean exists(@RequestParam("email") String email){
+    public String exists(@RequestParam("email") String email){
         System.out.println("ajax 이메일 체크 : " + email);
         return userService.emailCheck(email);
     }
