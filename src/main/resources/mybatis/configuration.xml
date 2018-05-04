@@ -8,11 +8,13 @@
         <typeAlias alias="GuestVO" type="com.huxx.vo.GuestVO" />
         <typeAlias alias="BoardVO" type="com.huxx.vo.BoardVO" />
         <typeAlias alias="UserVO" type="com.huxx.vo.UserVO" />
+        <typeAlias alias="GalleryVO" type="com.huxx.vo.GalleryVO" />
     </typeAliases>
     <mappers>
         <mapper resource="mybatis/mappers/guest.xml" />
         <mapper resource="mybatis/mappers/user.xml" />
         <mapper resource="mybatis/mappers/board.xml" />
+        <mapper resource="mybatis/mappers/gallery.xml" />
         <!--<mapper resource="mybatis/mappers/guest.xml" />-->
     </mappers>
 </configuration>

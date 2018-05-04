@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="gallery">
+
+    <resultMap type="GalleryVO" id="rm">
+        <result column="no" property="no"/>
+        <result column="filesize" property="fileSize"/>
+        <result column="savename" property="saveName"/>
+        <result column="orgname" property="orgName"/>
+        <result column="filepath" property="filePath"/>
+    </resultMap>
+
+    <select id="getList" resultMap="rm">
+        <![CDATA[
+        SELECT *
+        FROM GALLERY
+        ]]>
+    </select>
+
+    <insert id="insert" parameterType="GalleryVO">
+        <![CDATA[
+        INSERT INTO GALLERY VALUES (SEQ_GALLERY_NO.nextval,
+        #{fileSize},
+        #{saveName},
+        #{orgName},
+        #{filePath})
+        ]]>
+    </insert>
+
+</mapper>
