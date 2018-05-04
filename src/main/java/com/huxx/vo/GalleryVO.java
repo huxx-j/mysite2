@@ -5,17 +5,19 @@ public class GalleryVO {
     private String filePath;
     private String saveName;
     private long fileSize;
-    private int no ;
+    private int no;
     private String exName;
+    private int userNo;
 
     public GalleryVO() {
     }
 
-    public GalleryVO(String filePath, String orgName, String saveName, long fileSize) {
+    public GalleryVO(String filePath, String orgName, String saveName, long fileSize, int userNo) {
         this.orgName = orgName;
         this.filePath = filePath;
         this.saveName = saveName;
         this.fileSize = fileSize;
+        this.userNo = userNo;
     }
 
     public GalleryVO(String orgName, String filePath, String saveName, long fileSize, int no, String exName) {
@@ -24,6 +26,22 @@ public class GalleryVO {
         this.saveName = saveName;
         this.fileSize = fileSize;
         this.no = no;
+        this.exName = exName;
+    }
+
+    public int getUserNo() {
+        return userNo;
+    }
+
+    public void setUserNo(int userNo) {
+        this.userNo = userNo;
+    }
+
+    public String getExName() {
+        return exName;
+    }
+
+    public void setExName(String exName) {
         this.exName = exName;
     }
 
@@ -75,6 +93,8 @@ public class GalleryVO {
                 ", saveName='" + saveName + '\'' +
                 ", fileSize=" + fileSize +
                 ", no=" + no +
+                ", exName='" + exName + '\'' +
+                ", userNo=" + userNo +
                 '}';
     }
 }

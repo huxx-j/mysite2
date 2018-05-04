@@ -28,8 +28,9 @@ public class GalleryController {
     }
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
-    public String upload(@RequestParam("file") MultipartFile file){ // 파일을 파라미터로 받을때 타입은 MultipartFile로 한다.
-        galleryService.restore(file);
+    public String upload(@RequestParam("file") MultipartFile file, @RequestParam("userNo") int userNo){ // 파일을 파라미터로 받을때 타입은 MultipartFile로 한다.
+        System.out.println(userNo);
+        galleryService.restore(file,userNo);
         return "redirect:list";
     }
 }

@@ -10,7 +10,17 @@
         <result column="savename" property="saveName"/>
         <result column="orgname" property="orgName"/>
         <result column="filepath" property="filePath"/>
+        <result column="userno" property="userNo"/>
     </resultMap>
+
+    <delete id="del" parameterType="int">
+        <![CDATA[
+        DELETE
+        FROM GALLERY
+        WHERE NO=#{no}
+        ]]>
+
+    </delete>
 
     <select id="getList" resultMap="rm">
         <![CDATA[
@@ -25,7 +35,8 @@
         #{fileSize},
         #{saveName},
         #{orgName},
-        #{filePath})
+        #{filePath},
+        #{userNo})
         ]]>
     </insert>
 

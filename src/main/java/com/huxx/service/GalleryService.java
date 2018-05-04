@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.BufferedOutputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 import java.util.List;
 import java.util.UUID;
 
@@ -24,7 +21,7 @@ public class GalleryService {
         return galleryDAO.getList();
     }
 
-    public void restore(MultipartFile file) {
+    public void restore(MultipartFile file, int userNo) {
         String saveDir = "/Users/huxx_j/Documents/upload";
         //오리지날 파일명
         String orgName = file.getOriginalFilename();
@@ -36,8 +33,9 @@ public class GalleryService {
         String filePath = saveDir+"/"+orgName;
         //파일사이즈
         long fileSize = file.getSize();
-
-        GalleryVO galleryVO = new GalleryVO(filePath,orgName,saveName,fileSize);
+        System.out.println(userNo);
+        GalleryVO galleryVO = new GalleryVO(filePath,orgName,saveName,fileSize,userNo);
+        System.out.println(galleryVO.toString());
 
         //다오 연결 디비 저장
         int c= galleryDAO.upload(galleryVO);
@@ -58,6 +56,26 @@ public class GalleryService {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public int del(GalleryVO galleryVO){
+        int c = galleryDAO.del(galleryVO.getNo());
+        if(c>0) {
+            String path = "/Users/huxx_j/Documents"+galleryVO.getSaveName();
+            File file = new File(path);
+            if (file.exists()) {
+                if(file.delete()) {
+                    System.out.println("파일삭제 성공");
+                } else {
+                    System.out.println("파일삭제 실패");
+                }
+            } else {
+                System.out.println("파일이 존재하지 않습니다.");
+            }
+            return galleryVO.getNo();
+        } else {
+            return 0;
         }
     }
 }

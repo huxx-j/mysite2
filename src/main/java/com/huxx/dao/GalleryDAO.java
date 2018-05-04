@@ -20,4 +20,8 @@ public class GalleryDAO {
     public List<GalleryVO> getList(){
         return sqlSession.selectList("gallery.getList");
     }
+
+    public int del(int no) {
+        return sqlSession.delete("gallery.del", no);
+    }
 }
