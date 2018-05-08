@@ -24,8 +24,7 @@
 							<th colspan="2">글수정</th>
 							<input type="hidden" name="no" value="${param.no}">
 							<input type="hidden" name="kwd" value="${param.kwd}">
-							<input type="hidden" name="num" value="${param.num}">
-							<input type="hidden" name="pc" value="${param.pc}">
+							<input type="hidden" name="crtPage" value="${param.crtPage}">
 						</tr>
 						<tr>
 							<td class="label">제목</td>
@@ -39,7 +38,7 @@
 						</tr>
 					</table>
 					<div class="bottom">
-							<a href="/board/view?no=${param.no}&num=${param.num}&kwd=${param.kwd}&pc=${param.pc}">취소</a>
+							<a href="/board/view?no=${param.no}&crtPage=${param.crtPage}&kwd=${param.kwd}">취소</a>
 						<input type="submit" value="수정">
 					</div>
 				</form>				

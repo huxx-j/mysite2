@@ -18,6 +18,10 @@ public class BoardDAO {
         return sqlSession.selectList("board.search", map);
     }
 
+    public int totalCnt(String kwd) {
+        return sqlSession.selectOne("board.totalCnt",kwd);
+    }
+
     public void delete(BoardVO boardVO) {
         sqlSession.delete("board.delete", boardVO);
     }

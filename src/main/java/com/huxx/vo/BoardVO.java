@@ -10,9 +10,8 @@ public class BoardVO {
     private String name;
     private String num;
     private String snum;
-    private String tnum;
     private String kwd;
-    private String pc;
+    private int crtPage;
 
     public BoardVO() {
     }
@@ -39,6 +38,14 @@ public class BoardVO {
         this.userNo = userNo;
     }
 
+    public int getCrtPage() {
+        return crtPage;
+    }
+
+    public void setCrtPage(int crtPage) {
+        this.crtPage = crtPage;
+    }
+
     public String getName() {
         return name;
     }
@@ -61,22 +68,6 @@ public class BoardVO {
 
     public void setSnum(String snum) {
         this.snum = snum;
-    }
-
-    public String getTnum() {
-        return tnum;
-    }
-
-    public void setTnum(String tnum) {
-        this.tnum = tnum;
-    }
-
-    public String getPc() {
-        return pc;
-    }
-
-    public void setPc(String pc) {
-        this.pc = pc;
     }
 
     public String getKwd() {
@@ -147,9 +138,8 @@ public class BoardVO {
                 ", name='" + name + '\'' +
                 ", num='" + num + '\'' +
                 ", snum='" + snum + '\'' +
-                ", tnum='" + tnum + '\'' +
                 ", kwd='" + kwd + '\'' +
-                ", pc='" + pc + '\'' +
+                ", crtPage=" + crtPage +
                 '}';
     }
 }

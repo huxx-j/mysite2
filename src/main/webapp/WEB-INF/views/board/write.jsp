@@ -38,7 +38,7 @@
 						</tr>
 					</table>
 					<div class="bottom">
-						<a href="/board/list?num=${param.num}&pc=${param.pc}&kwd=${param.kwd}">취소</a>
+						<a href="/board/list?crtPage=${param.crtPage}&kwd=${param.kwd}">취소</a>
 						<input type="submit" value="등록">
 					</div>
 				</form>				

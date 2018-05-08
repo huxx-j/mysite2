@@ -23,29 +23,31 @@
             FROM (
               SELECT ROWNUM num, temp.*
                 FROM (
-                  SELECT b.NO, b.TITLE, u.name, b.HIT, b.REG_DATE, b.USER_NO,]]>
-        <choose>
-            <when test="#{kwd!=null}">
-                <![CDATA[
-                          (SELECT COUNT(*) FROM BOARD WHERE TITLE LIKE '%'||#{kwd}||'%') tnum
-                              FROM BOARD B, USERS U
-                                  WHERE b.USER_NO=u.no and b.TITLE LIKE '%'||#{kwd}||'%']]>
-            </when>
-
-            <otherwise>
-                <![CDATA[
-                          (SELECT COUNT(*) FROM BOARD) tnum
-                              FROM BOARD B, USERS U
-                                  WHERE b.USER_NO=u.no
+                  SELECT b.NO, b.TITLE, u.name, b.HIT, b.REG_DATE, b.USER_NO
+                    FROM BOARD B, USERS U
+                      WHERE b.USER_NO=u.no
                 ]]>
-            </otherwise>
-        </choose>
+            <if test="kwd != null and kwd != ''">
+                <![CDATA[
+                          and b.TITLE LIKE '%'||#{kwd}||'%']]>
+            </if>
         <![CDATA[
                   ORDER BY b.NO DESC) temp)
                       WHERE num
-                          BETWEEN #{begin} and #{end}
+                          BETWEEN #{startRnum} and #{endRnum}
         ]]>
+    </select>
 
+    <select id="totalCnt" parameterType="String" resultType="int">
+        <![CDATA[
+        SELECT count(*)
+          FROM BOARD
+        ]]>
+        <if test="_parameter  != null and _parameter !=''">
+            <![CDATA[
+            WHERE TITLE LIKE '%'||#{kwd}||'%'
+            ]]>
+        </if>
     </select>
 
     <delete id="delete" parameterType="String">

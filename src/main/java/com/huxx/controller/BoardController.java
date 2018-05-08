@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Map;
+
 @Controller
 @RequestMapping(value = "/board")
 public class BoardController {
@@ -17,9 +19,17 @@ public class BoardController {
     @Autowired
     private BoardService boardService;
 
+//    @RequestMapping(value = "/list", method = RequestMethod.GET)
+//    public String list(Model model,@ModelAttribute BoardVO boardVO) {
+//        model.addAttribute("list",boardService.selectList(boardVO));
+//        return "board/list";
+//    }
+
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String list(Model model,@ModelAttribute BoardVO boardVO) {
-        model.addAttribute("list",boardService.selectList(boardVO));
+    public String list (@RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage,
+                        @RequestParam(value = "kwd", required = false, defaultValue ="") String kwd,
+                        Model model){
+        model.addAttribute("r_Map", boardService.selectList(crtPage,kwd));
         return "board/list";
     }
 
@@ -31,7 +41,7 @@ public class BoardController {
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String add(@ModelAttribute BoardVO boardVO){
         boardService.insert(boardVO);
-        return "redirect:list?num=1&pc=1&kwd=";
+        return "/board/list";
     }
 
     @RequestMapping(value = "/view", method = RequestMethod.GET)
@@ -49,13 +59,13 @@ public class BoardController {
     @RequestMapping(value = "/update", method = RequestMethod.GET)
     public String update(@ModelAttribute BoardVO boardVO) {
         boardService.update(boardVO);
-        return "redirect:view?num="+boardVO.getNum()+"&no="+boardVO.getNo()+"&kwd="+boardVO.getKwd()+"&pc="+boardVO.getPc();
+        return "redirect:view?crtPage="+boardVO.getCrtPage()+"&no="+boardVO.getNo()+"&kwd="+boardVO.getKwd();
 
     }
 
     @RequestMapping(value = "/del", method = RequestMethod.GET)
     public String del(@ModelAttribute BoardVO boardVO) {
         boardService.delete(boardVO);
-        return "redirect:list?num="+boardVO.getNum()+"&pc="+boardVO.getPc();
+        return "redirect:list?crtPage="+boardVO.getCrtPage();
     }
 }

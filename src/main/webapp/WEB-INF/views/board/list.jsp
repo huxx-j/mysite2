@@ -32,17 +32,20 @@
                     <th>작성일</th>
                     <th>&nbsp;</th>
                 </tr>
-                <c:if test="${list != null}">
-                    <c:forEach items="${list}" var="vo">
+                <c:if test="${r_Map.list != null}">
+                    <c:forEach items="${r_Map.list}" var="vo">
                         <tr>
                             <td>${vo.no}</td>
-                            <td><a href="/board/view?no=${vo.no}&num=${param.num}&kwd=${param.kwd}&pc=${param.pc}">${vo.title}</a></td>
+                            <td>
+                                <a href="/board/view?no=${vo.no}&crtPage=${param.crtPage}&kwd=${r_Map.kwd}">${vo.title}</a>
+                            </td>
                             <td>${vo.name}</td>
                             <td>${vo.hit}</td>
                             <td>${vo.date}</td>
                             <td>
                                 <c:if test="${vo.userNo eq authUser.no}">
-                                    <a href="/board/del?no=${vo.no}&userNo=${vo.userNo}&num=${param.num}&pc=${param.pc}" class="del">삭제</a>
+                                    <a href="/board/del?no=${vo.no}&userNo=${vo.userNo}"
+                                       class="del">삭제</a>
                                 </c:if>
                             </td>
                         </tr>
@@ -51,35 +54,23 @@
             </table>
             <div class="pager">
                 <ul>
-                            <c:if test="${param.pc!=1}">
-                                <li><a href="/board/list?&num=${(param.pc-1)*5}&pc=${param.pc-1}&kwd=${param.kwd}">◀</a></li>
-                            </c:if>
+                    <c:if test="${r_Map.prev}">
+                        <li><a href="/board/list?&crtPage=${r_Map.startPageBtnNo-1}&kwd=${r_Map.kwd}">◀</a></li>
+                    </c:if>
 
-                            <c:choose>
-                                <c:when test="${list.get(0).tnum>=param.pc*25}">
-                                    <c:forEach var="i" begin="${(param.pc*5)-4}" end="${param.pc*5}">
-                                        <li class="${param.num eq i?'selected':''}"><a
-                                                href="/board/list?num=${i}&pc=${param.pc}&kwd=${param.kwd}">${i}</a></li>
-                                    </c:forEach>
-                                </c:when>
+                    <c:forEach var="i" begin="${r_Map.startPageBtnNo}" end="${r_Map.endPageBtnNo}">
+                        <li class="${param.crtPage eq i?'selected':''}"><a href="/board/list?crtPage=${i}&kwd=${r_Map.kwd}">${i}</a></li>
+                    </c:forEach>
 
-                                <c:otherwise>
-                                    <c:forEach var="i" begin="${(param.pc*5)-4}" end="${list.get(0).tnum%5==0?(list.get(0).tnum)/5:((list.get(0).tnum)/5)+1}" step="1">
-                                        <li class="${param.num eq i?'selected':''}"><a
-                                                href="/board/list?num=${i}&pc=${param.pc}&kwd=${param.kwd}">${i}</a></li>
-                                    </c:forEach>
-                                </c:otherwise>
-                            </c:choose>
-
-                            <c:if test="${param.pc*25<list.get(0).tnum}">
-                                <li><a href="/board/list?num=${((param.pc+1)*5)-4}&pc=${param.pc+1}&kwd=${param.kwd}">▶</a></li>
-                            </c:if>
+                    <c:if test="${r_Map.next}">
+                        <li><a href="/board/list?crtPage=${r_Map.endPageBtnNo+1}&kwd=${r_Map.kwd}">▶</a></li>
+                    </c:if>
                 </ul>
             </div>
 
             <div class="bottom">
                 <c:if test="${authUser != null}">
-                    <a href="/board/writeform?num=${param.num}&pc=${param.pc}" id="new-book">글쓰기</a>
+                    <a href="/board/writeform?crtPage=${param.crtPage}" id="new-book">글쓰기</a>
                 </c:if>
 
             </div>

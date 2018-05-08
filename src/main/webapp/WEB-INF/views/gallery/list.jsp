@@ -46,7 +46,7 @@
 				
 				<div id="gallery">
 					<c:if test="${authUser != null}">
-						<form method="post" action="/gallery/upload" enctype="multipart/form-data">
+						<form method="post" action="/gallery/upload"  enctype="multipart/form-data">
 							<input type="hidden" id="session_no" name="userNo" value="${authUser.no}">
 							<table>
 								<tr>

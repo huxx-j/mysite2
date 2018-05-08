@@ -38,11 +38,11 @@
             <div class="bottom">
                         <c:choose>
                             <c:when test="${boardVO.userNo eq authUser.no}">
-                                <a href="/board/list?&num=${param.num}&kwd=${param.kwd}&pc=${param.pc}">글목록</a>
-                                <a href="/board/modifyform?num=${param.num}&no=${boardVO.no}&kwd=${param.kwd}&pc=${param.pc}">글수정</a>
+                                <a href="/board/list?&crtPage=${param.crtPage}&kwd=${param.kwd}">글목록</a>
+                                <a href="/board/modifyform?crtPage=${param.crtPage}&no=${boardVO.no}&kwd=${param.kwd}">글수정</a>
                             </c:when>
                             <c:otherwise>
-                                <a href="/board/list?&num=${param.num}&kwd=${param.kwd}&pc=${param.pc}">글목록</a>
+                                <a href="/board/list?&crtPage=${param.crtPage}&kwd=${param.kwd}">글목록</a>
                             </c:otherwise>
                         </c:choose>
             </div>
