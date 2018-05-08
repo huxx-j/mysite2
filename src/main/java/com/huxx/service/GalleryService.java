@@ -21,43 +21,88 @@ public class GalleryService {
         return galleryDAO.getList();
     }
 
-    public void restore(MultipartFile file, int userNo) {
+    public void restore2(List<MultipartFile> files, int userNo) { //여러개 업로드
         String saveDir = "/Users/huxx_j/Documents/upload";
-        //오리지날 파일명
-        String orgName = file.getOriginalFilename();
+        String orgName = "";
         //확장자
-        String exName = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+        String exName = "";
         //저장파일명
-        String saveName = System.currentTimeMillis()+ "_" + UUID.randomUUID().toString()+ "_" + orgName; //임의의 난수를 주는데 겹칠수도 있으니 시간을 추가해줌
+        String saveName = ""; //임의의 난수를 주는데 겹칠수도 있으니 시간을 추가해줌
         //파일패스
-        String filePath = saveDir+"/"+orgName;
+        String filePath = "";
         //파일사이즈
-        long fileSize = file.getSize();
-        System.out.println(userNo);
-        GalleryVO galleryVO = new GalleryVO(filePath,orgName,saveName,fileSize,userNo);
-        System.out.println(galleryVO.toString());
+        long fileSize = 0;
+
+        for(MultipartFile file : files) {
+            //오리지날 파일명
+            orgName = file.getOriginalFilename();
+            //확장자
+            exName = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+            //저장파일명
+            saveName = System.currentTimeMillis()+ "_" + UUID.randomUUID().toString()+ "_" + orgName; //임의의 난수를 주는데 겹칠수도 있으니 시간을 추가해줌
+            //파일패스
+            filePath = saveDir+"/"+orgName;
+            //파일사이즈
+            fileSize = file.getSize();
+
+            GalleryVO galleryVO = new GalleryVO(filePath,orgName,saveName,fileSize,userNo);
+
+            galleryDAO.upload(galleryVO);
+
+            //파일서버 복사
+            try {
+                byte[] fileData = file.getBytes();
+                OutputStream outputStream = new FileOutputStream(saveDir+"/"+saveName);
+                BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(outputStream);
+                bufferedOutputStream.write(fileData);
+                if (bufferedOutputStream != null) { //파일쓰기가 끝나고 연결이 돼있으면 연결을 끊는거
+                    bufferedOutputStream.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
         //다오 연결 디비 저장
-        int c= galleryDAO.upload(galleryVO);
-
-        if(c >0) {
-            System.out.println("업로드 성공");
-        } else {
-            System.out.println("업로드 실패");
-        }
-        //파일서버 복사
-        try {
-            byte[] fileData = file.getBytes();
-            OutputStream outputStream = new FileOutputStream(saveDir+"/"+saveName);
-            BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(outputStream);
-            bufferedOutputStream.write(fileData);
-            if (bufferedOutputStream != null) { //파일쓰기가 끝나고 연결이 돼있으면 연결을 끊는거
-                bufferedOutputStream.close();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
+
+//    public void restore(MultipartFile file, int userNo) { //단일 파일 업로드
+//        String saveDir = "/Users/huxx_j/Documents/upload";
+//        //오리지날 파일명
+//        String orgName = file.getOriginalFilename();
+//        //확장자
+//        String exName = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+//        //저장파일명
+//        String saveName = System.currentTimeMillis()+ "_" + UUID.randomUUID().toString()+ "_" + orgName; //임의의 난수를 주는데 겹칠수도 있으니 시간을 추가해줌
+//        //파일패스
+//        String filePath = saveDir+"/"+orgName;
+//        //파일사이즈
+//        long fileSize = file.getSize();
+//        System.out.println(userNo);
+//        GalleryVO galleryVO = new GalleryVO(filePath,orgName,saveName,fileSize,userNo);
+//        System.out.println(galleryVO.toString());
+//
+//        //다오 연결 디비 저장
+//        int c= galleryDAO.upload(galleryVO);
+//
+//        if(c >0) {
+//            System.out.println("업로드 성공");
+//        } else {
+//            System.out.println("업로드 실패");
+//        }
+//        //파일서버 복사
+//        try {
+//            byte[] fileData = file.getBytes();
+//            OutputStream outputStream = new FileOutputStream(saveDir+"/"+saveName);
+//            BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(outputStream);
+//            bufferedOutputStream.write(fileData);
+//            if (bufferedOutputStream != null) { //파일쓰기가 끝나고 연결이 돼있으면 연결을 끊는거
+//                bufferedOutputStream.close();
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     public int del(GalleryVO galleryVO){
         int c = galleryDAO.del(galleryVO.getNo());

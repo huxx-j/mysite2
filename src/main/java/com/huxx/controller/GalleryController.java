@@ -27,10 +27,16 @@ public class GalleryController {
         return "gallery/list";
     }
 
-    @RequestMapping(value = "/upload", method = RequestMethod.POST)
-    public String upload(@RequestParam("file") MultipartFile file, @RequestParam("userNo") int userNo){ // 파일을 파라미터로 받을때 타입은 MultipartFile로 한다.
-        System.out.println(userNo);
-        galleryService.restore(file,userNo);
+//    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+//    public String upload(@RequestParam("file") MultipartFile file, @RequestParam("userNo") int userNo){ // 파일을 파라미터로 받을때 타입은 MultipartFile로 한다.
+//        galleryService.restore(file,userNo);
+//        return "redirect:list";
+//    }
+
+    @RequestMapping(value = "/upload2", method = RequestMethod.POST)
+    public String upload2(@RequestParam("userNo") int userNo, @RequestParam(value = "file", required = false) List<MultipartFile> files){
+        galleryService.restore2(files,userNo);
         return "redirect:list";
+
     }
 }

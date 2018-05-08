@@ -46,12 +46,17 @@
 				
 				<div id="gallery">
 					<c:if test="${authUser != null}">
-						<form method="post" action="/gallery/upload"  enctype="multipart/form-data">
+						<form method="post" action="/gallery/upload2"  enctype="multipart/form-data">
 							<input type="hidden" id="session_no" name="userNo" value="${authUser.no}">
 							<table>
+								<%--<tr>--%>
+									<%--<td>첨부파일</td>--%>
+									<%--<td><input type="file" name="file"></td>--%>
+									<%--<td><input type="submit" value="파일업로드"></td>--%>
+								<%--</tr>--%>
 								<tr>
 									<td>첨부파일</td>
-									<td><input type="file" name="file"></td>
+									<td><input type="file" name="file" multiple></td>
 									<td><input type="submit" value="파일업로드"></td>
 								</tr>
 							</table>
